@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="bg-gray-7">
+            <div class="breadcrumbs-custom box-transform-wrap context-dark">
+                <div class="container">
+                    <h3 class="breadcrumbs-custom-title">Our Item</h3>
+                    <div class="breadcrumbs-custom-decor"></div>
+                </div>
+                <div class="box-transform" style="background-image: url({% static 'images/bg-1.jpg' %});"></div>
+            </div>
+
+        </section>
+
+
+         <!-- What We Offer-->
+         <section class="section section-md bg-default">
+            <div class="container">
+                <!-- <h3 class="oh-desktop"><span class="d-inline-block wow slideInDown">Our Item</span></h3> -->
+                <div class="row row-md row-30">
+                   
+                    {% for item in items %}
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="oh-desktop">
+                            <!-- Services Terri-->
+                            <article class="services-terri wow slideInUp">
+                                {% if item.image %}
+                                <div class="services-terri-figure">
+                                    <img style="width:370px;height:278px;" src="{{item.image.url}}" alt="" width="370" height="278" />
+                                </div>
+                                {% else %}
+                                <div class="services-terri-figure">
+                                    <img src="https://via.placeholder.com/" alt="" width="370" height="278" />
+                                </div>
+                                {% endif %} 
+                                <div class="services-terri-caption">
+                                    <!-- <span class="services-terri-icon linearicons-leaf"></span> -->
+                                    <h5 class="services-terri-title">
+                                        <a href="{% url 'categoryapp:item_detail' item.pk %}">{{item.name}}</a>
+                                    </h5>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </section>
+
+{% endblock %}
